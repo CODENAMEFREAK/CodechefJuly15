@@ -1,55 +1,71 @@
 #include<stdio.h>
 
-char * solveCase()
+/**
+    Colors: black, blue, red, green, yellow, orange
+    Sides: front, back, left, right, top, bottom
+*/
+
+void solveCases(void)
 {
-    char faces[6];
-    char ch;
+    char box[6];
+    char colorSTR[7];
     for(int i=0;i<6;i++)
+    {
+        scanf("%s", colorSTR);
+        if(colorSTR[0]=='b')
         {
-            ch=getchar();
-            printf("character %c\n",ch);
-            switch(ch)
+            *(box+i)=colorSTR[2];
+        }
+        else
+        {
+            *(box+i)=colorSTR[0];
+        }
+    }
+
+    if(box[0]==box[4])
+        {
+            if ( (box[0]== box[2]) || (box[0]==box[3]) )
             {
-                case 'b':{getchar();faces[i]=getchar(); break;}
-                default:{faces[i]=ch; break;}
+                printf("YES\n");
+                return;
             }
-
-
-
         }
-        for(int i=0;i<6;i++)
-            printf("%c",faces[i]);
-        if(faces[0]==faces[2])
+    if(box[0]==box[5])
+    {
+         if ( (box[0]== box[2]) || (box[0]==box[3]) )
+            {
+                printf("YES\n");
+                return;
+            }
+    }
+    if(box[1]==box[4])
+    {
+        if((box[1]==box[2])||(box[1]==box[3]))
         {
-            if((faces[0]==faces[4])||(faces[0]==faces[5]))
-                return "YES\n";
+            printf("YES\n");
+            return;
         }
-        if(faces[0]== faces[3])
+    }
+    if(box[1]==box[5])
+    {
+        if((box[1]==box[2])||(box[1]==box[3]))
         {
-            if((faces[0]==faces[4])||(faces[0]==faces[5]))
-                return "YES\n";
+            printf("YES\n");
+            return;
         }
-        if(faces[1]==faces[2])
-        {
-            if((faces[1]==faces[4])||(faces[1]==faces[5]))
-                return "YES\n";
-        }
-        if(faces[1]== faces[3])
-        {
-            if((faces[1]==faces[4])||(faces[1]==faces[5]))
-                return "YES\n";
-        }
+    }
+    printf("NO\n");
+    return;
 
-        return "NO\n";
 }
 
 int main()
 {
     int cases;
     scanf("%d",&cases);
-    getchar();
     for(int i=1;i<=cases;i++)
     {
-        printf("%s",solveCase());
+           solveCases();
     }
+    return 0;
 }
